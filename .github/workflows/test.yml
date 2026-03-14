@@ -1,4 +1,4 @@
-name: Quick Test
+name: Test
 on: workflow_dispatch
 jobs:
   test:
@@ -6,3 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: python test.py
+      - run: git add . && git commit -m "test" && git push
