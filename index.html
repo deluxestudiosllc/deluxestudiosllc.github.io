@@ -8,13 +8,13 @@
     <script>
         async function check() {
             try {
-                const r = await fetch('data.json');
+                const r = await fetch('./test.json');
                 const d = await r.json();
                 document.getElementById('output').innerHTML =
                     `<pre>${JSON.stringify(d, null, 2)}</pre>`;
             } catch (e) {
                 document.getElementById('output').innerHTML =
-                    `Error: ${e.message}<br>Create data.json first!`;
+                    `Error: ${e.message}<br>Create test.json first!`;
             }
         }
         check();
