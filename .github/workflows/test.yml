@@ -9,5 +9,5 @@ jobs:
       - run: |
           git config user.email "test@test.com"
           git config user.name "Test"
-          git add data.json
+          git add test.json
           git commit -m "Update data" && git push || echo "No changes"

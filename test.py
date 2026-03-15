@@ -8,7 +8,7 @@ data = {
     "message": "✅ Python updated this file!"
 }
 
-with open("data.json", "w") as f:
+with open("test.json", "w") as f:
     json.dump(data, f, indent=2)
 
-print("Updated data.json")
+print("Updated test.json")
