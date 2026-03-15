@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html>
 
 <body>
+    <h1>Python ↔ JS Test</h1>
+    <div id="output">Checking...</div>
+
     <script>
-        fetch('test.json')
-            .then(r => r.json())
-            .then(data => document.body.innerHTML =
-                `<h1>✅ Python + JS Works!</h1><pre>${JSON.stringify(data, null, 2)}</pre>`);
+        async function check() {
+            try {
+                const r = await fetch('data.json');
+                const d = await r.json();
+                document.getElementById('output').innerHTML =
+                    `<pre>${JSON.stringify(d, null, 2)}</pre>`;
+            } catch (e) {
+                document.getElementById('output').innerHTML =
+                    `Error: ${e.message}<br>Create data.json first!`;
+            }
+        }
+        check();
     </script>
 </body>
 
