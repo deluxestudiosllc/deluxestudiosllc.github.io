@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Python Test Section -->
+    <div class="container mt-5">
+        <h3>🧪 Python Test Results</h3>
+        <div id="python-test" class="alert alert-info">
+            Loading Python test results...
+        </div>
+        <button onclick="runPythonTest()" class="btn btn-warning">
+            Run Python Test Now
+        </button>
+    </div>
+
+    <script>
+        async function runPythonTest() {
+            document.getElementById('python-test').innerHTML =
+                '<div class="spinner-border"></div> Running Python test...';
+
+            // This would trigger the GitHub Actions workflow
+            alert('Check GitHub Actions tab! Python will run there.');
+
+            // After 30 seconds, check for results
+            setTimeout(() => {
+                fetch('test-results.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        document.getElementById('python-test').innerHTML = `
+                    <strong>✅ Python Test Successful!</strong><br>
+                    Time: ${data.timestamp}<br>
+                    Files created: ${data.filesCreated.join(', ')}
+                `;
+                    });
+            }, 30000);
+        }
+    </script>
+</body>
+
+</html>
